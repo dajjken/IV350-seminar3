@@ -7,8 +7,7 @@ import integration.ItemDescription;
 
 /**
  * This class represents a purchase of goods made by a single customer.
- * @author danie
- *
+ * 
  */
 public class Sale {
 	
@@ -80,7 +79,7 @@ public class Sale {
 	}
 	
 	/**
-	 * Temporary printfunction
+	 * Temporary printmethod, will be removed
 	 */
 	private void printList() 
 	{	
