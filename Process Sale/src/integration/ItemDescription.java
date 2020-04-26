@@ -62,6 +62,14 @@ public class ItemDescription {
 	}
 	
 	/**
+	 * Returns the VAT-rate of the current object. 
+	 * @return The VAT rate as a double.
+	 */
+	public double getVATRate() {
+		return this.VATRate;
+	}
+	
+	/**
 	 *  TEMPORARY, REMOVE LATER!!!!!!!!!!!!!!!!!
 	 */
 	public String toString()
