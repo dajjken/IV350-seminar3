@@ -6,7 +6,7 @@ package model;
  */
 public class Amount {
 	
-	private final int amount;
+	private final double amount;
 	
 	
 	/**
@@ -20,7 +20,7 @@ public class Amount {
 	 *  Creates an new instance of this class
 	 * @param amount Represent the amount
 	 */
-	public Amount(int amount) {
+	public Amount(double amount) {
 		this.amount = amount;
 	}
 	/**
@@ -55,6 +55,6 @@ public class Amount {
 	 */
 	public String toString()
 	{
-		return Integer.toString(amount);
+		return Double.toString(amount);
 	}
 }
