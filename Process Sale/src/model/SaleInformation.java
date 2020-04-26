@@ -22,7 +22,7 @@ public class SaleInformation {
 	{
 		this.itemList = sale.itemsInPurchase;
 		this.saleTime = sale.saleTime;
-		this.date = date.now();
+		this.date = LocalDate.now();
 		this.totalPrice = sale.totalPrice;
 		this.totalVAT = sale.totalVAT;
 		this.itemListAsString = sale.itemsToString(); 
