@@ -51,6 +51,16 @@ public class Amount {
     }
 	
 	/**
+	 * Multpliply the current instance with the parameter.
+	 * @param number Represents the number of times the amount will be multiplied.
+	 * @return the new updated amount
+	 */
+	public Amount multiplyAmountDouble(double number) {
+		System.out.println("MAD: " + amount);
+        return new Amount(amount * number);
+    }
+	
+	/**
 	 * Returns the instance as a string-representation.
 	 */
 	public String toString()
