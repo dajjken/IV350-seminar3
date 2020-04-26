@@ -1,28 +1,47 @@
 package model;
 
 import integration.ItemDescription;
-
+/**
+ * This class represent a type of item being purchased
+ *
+ */
 public class Item {
 	
 	ItemDescription itemDesc;
 	int quantity;
 	
+	/**
+	 * Creates an instance.
+	 * @param itemDesc Represents the items description stored in the database.
+	 * @param quantity The quantity of the item being purchased.
+	 */
 	public Item(ItemDescription itemDesc, int quantity)
 	{
 		this.itemDesc = itemDesc;
 		this.quantity = quantity;
 	}
 	
+	/**
+	 * 
+	 * @return the ItemDescription of the current instance.
+	 */
 	public ItemDescription getItemDescription()
 	{
 		return itemDesc;
 	}
 	
-	void updateQuantity(int addQuantity)
+	/**
+	 * 
+	 * @param addQuantity Represents the quantity being added to the current instance.
+	 */
+	public void updateQuantity(int addQuantity)
 	{
 		this.quantity = this.quantity + addQuantity;
 	}
-
+	
+	/**
+	 *  Returns the object as a String.
+	 */
 	public String toString()
 	{
 		if(quantity>1)
