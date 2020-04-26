@@ -56,12 +56,12 @@ public class ExternalInventorySystem {
 	}
 	
 	private void addGoods() {
-		goodsInStock.add(new ItemDescription(new Amount(15), "Milk", 2, 1010));
-		goodsInStock.add(new ItemDescription(new Amount(25), "Bread", 2, 2020));
-		goodsInStock.add(new ItemDescription(new Amount(10), "Flour", 2, 3030));
-		goodsInStock.add(new ItemDescription(new Amount(20), "Pasta", 2, 4040));
-		goodsInStock.add(new ItemDescription(new Amount(35), "Coffe", 2, 5050));
-		goodsInStock.add(new ItemDescription(new Amount(85), "Cheese", 2, 6060));
+		goodsInStock.add(new ItemDescription(new Amount(15), "Milk", 0.06, 1010));
+		goodsInStock.add(new ItemDescription(new Amount(25), "Bread", 0.06, 2020));
+		goodsInStock.add(new ItemDescription(new Amount(10), "Flour", 0.12, 3030));
+		goodsInStock.add(new ItemDescription(new Amount(20), "Pasta", 0.12, 4040));
+		goodsInStock.add(new ItemDescription(new Amount(35), "Coffe", 0.25, 5050));
+		goodsInStock.add(new ItemDescription(new Amount(85), "Cheese", 0.12, 6060));
 	
 	}
 
