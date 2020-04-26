@@ -5,16 +5,23 @@ import java.util.ArrayList;
 
 import integration.ItemDescription;
 
+/**
+ * This class represents a purchase of goods made by a single customer.
+ * @author danie
+ *
+ */
 public class Sale {
 	
 	LocalTime saleTime;
-	ArrayList<ItemDescription> itemList = new ArrayList<>();
 	ArrayList<Item> itemsInPurchase = new ArrayList<>();
 	TotalPrice totalPrice;
 	Amount totalVAT;
 	
 	PresentSaleDTO displaySale;
 	
+	/**
+	 * Creates a new instance.
+	 */
 	public Sale()
 	{
 		saleTime = LocalTime.now();
@@ -28,38 +35,27 @@ public class Sale {
 	 * @param newItem The item to be added
 	 * @param quantity Number of items to be added
 	 */
-	public PresentSaleDTO addItemToList(ItemDescription newItem, int quantity) 
-	{
-		//itemList.add(item);
-		//Item itemToBeAdded = new Item(item, 1);
+	public PresentSaleDTO addItemToList(ItemDescription newItem, int quantity) {
 		updateList(newItem, quantity);
 		updateTotalPrice(newItem, quantity);
 		
 		return new PresentSaleDTO(newItem, totalPrice);
-		
 	}
 
-
-	private void updateTotalPrice(ItemDescription item, int quantity)
-	{
+	private void updateTotalPrice(ItemDescription item, int quantity) {
 		totalPrice.addToTotalPrice(item.getPrice().multiplyAmount(quantity));
 	}
 	
-	private void updateList(ItemDescription checkedItem, int quantity)
-	{
-		if(this.itemIsInList(checkedItem)) 
-		{
-			for(Item item: itemsInPurchase)
-			{
-				if(item.itemDesc.equals(checkedItem))				
-				{
+	private void updateList(ItemDescription checkedItem, int quantity) {
+		if(this.itemIsInList(checkedItem)) {
+			for(Item item: itemsInPurchase) {
+				if(item.itemDesc.equals(checkedItem)) {
 					item.updateQuantity(quantity);
 				}
 			}
 		}	
-		else
-		{
-		itemsInPurchase.add(new Item(checkedItem, quantity));
+		else {
+			itemsInPurchase.add(new Item(checkedItem, quantity));
 		}		
 	}
 	
@@ -70,7 +66,8 @@ public class Sale {
 			if(item.itemDesc.equals(checkedItem))				
 				return true;
 		}	
-			return false;
+			
+		return false;
 	}
 	
 	
@@ -94,6 +91,10 @@ public class Sale {
 		System.out.println("Total price:" + totalPrice.toString());
 	}
 	
+	/**
+	 *  Returns the itemList as a string, will be used when printing receipt.
+	 * @return String representation of the list if items.
+	 */
 	public String itemsToString() {
 		StringBuilder builder = new StringBuilder();
 		
