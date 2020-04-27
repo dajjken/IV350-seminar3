@@ -1,9 +1,9 @@
 package view;
 
 import controller.Controller;
-import model.Amount;
-import model.PresentSaleDTO;
-import model.SaleInformation;
+import model.DTO.PresentSaleDTO;
+import model.DTO.SaleInformation;
+import model.util.Amount;
 
 import java.util.Scanner;
 
@@ -27,11 +27,11 @@ public class View {
 	 * the quantity of that item. To end the input of item, enter "0".
 	 * 
 	 * The available items to enter are:
-	 * 1010 - Milk
+	 * 1010 - Butter
 	 * 2020 - Bread
 	 * 3030 - Flour
 	 * 4040 - Pasta
-	 * 5050 - Coffe
+	 * 5050 - Coffee
 	 * 6060 - Cheese
 	 * 
 	 */
@@ -58,7 +58,7 @@ public class View {
 	
 	private void userScanningItems() {
 		Scanner input = new Scanner(System.in);
-		PresentSaleDTO displaySale;
+		PresentSaleDTO displaySale = null;
 		
 		int itemID = 1;
 		int quantity = 1;
@@ -73,8 +73,13 @@ public class View {
 			System.out.println("No of items: ");
 			quantity = input.nextInt(); 
 			
-			displaySale = controller.findItem(itemID, quantity);
-			System.out.println(displaySale.toString());
+			if(quantity>0)
+				displaySale = controller.findItem(itemID, quantity);
+			else
+				displaySale = null;
+			
+			if(displaySale!=null)
+				System.out.println(displaySale.toString());
 		}
 	}
 	
