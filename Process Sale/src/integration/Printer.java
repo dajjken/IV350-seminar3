@@ -2,6 +2,10 @@ package integration;
 
 import model.DTO.Receipt;
 
+/**
+ *Represents a Printer that prints receipts. 
+ *
+ */
 public class Printer {
 	
 	
@@ -9,7 +13,7 @@ public class Printer {
 	}
 	
 	/**
-	 * Prints the String representation of <code>Recept</code>
+	 * Prints the String representation of <code>Receipt</code>
 	 * @param receipt
 	 */
 	public void printReceipt(Receipt receipt) {
