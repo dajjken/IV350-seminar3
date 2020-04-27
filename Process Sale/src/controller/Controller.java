@@ -21,17 +21,17 @@ import model.TotalPrice;
  */
 public class Controller {
 
-	ExternalInventorySystem inventory;
-	DiscountSystem discSys;
-	ExternalAccountingSystem accounting;
+	private ExternalInventorySystem inventory;
+	private DiscountSystem discSys;
+	private ExternalAccountingSystem accounting;
 	private SaleLog saleLog;
 	
-	Printer printer;
-	CashRegister register;
-	Sale sale;
-	SaleInformation saleInfo;
-	PresentSaleDTO displaySale;
-	Change change;
+	private Printer printer;
+	private CashRegister register;
+	private Sale sale;
+	private SaleInformation saleInfo;
+	
+//	private Change change;
 	
 	
 	/**
@@ -49,7 +49,7 @@ public class Controller {
 		
 		this.register = new CashRegister();
 		
-		//System.out.println("Controller created");
+		
 	}
 	
 	
@@ -70,18 +70,8 @@ public class Controller {
 	 * @return current saleInfo, i.e latest scanned item and running total.
 	 */
 	public PresentSaleDTO findItem(int itemID, int quantity) {
-/*
- * 	Debugging nullpointer
- * 	
-	if(inventory!=null)
-		System.out.println("inventory is not null");
-	if(printer!=null)
-		System.out.println("printer is not null");
-	if(register!=null)
-		System.out.println("register is not null");
-	if(sale!=null)
-		System.out.println("sale is not null");
-*/	
+
+		PresentSaleDTO displaySale = null;
 	
 		ItemDescription itemToBeAdded = inventory.findItem(itemID);
 		if(itemToBeAdded!=null) {
@@ -93,34 +83,40 @@ public class Controller {
 	
 	
 	/**
-	 *  Comment comment, needs more comments
+	 * Stops the sale.
+	 * @return Information about the sale as an SaleInformation-object. 
 	 */
 	public SaleInformation stopSale() {
 		
 		return this.saleInfo = sale.stopSale();
 	}
 	
+	/**
+	 *  Check if the customer is egible for discount. Not applied to this task, will 
+	 *  return the same total price stored in saleInfo. 
+	 * @param customerID Represents the unique id for the customer.
+	 * @param saleInfo Contains information about the sale
+	 * @return The same total price as in the SaleInformation object.
+	 */
 	public TotalPrice checkDiscount(int customerID, SaleInformation saleInfo) {
 		return discSys.checkDiscount(customerID, saleInfo);
 	}
+	
 	/**
-	 * 
+	 *  
 	 * @param amountPaid
 	 * @return
 	 */
-	public Amount enterAmountPaid(Amount amountPaid) {
-		change = new Change(this.saleInfo);
+	public void enterAmountPaid(Amount amountPaid) {
+		Change change = new Change(this.saleInfo);
 		
-		register.updateAmountStored(sale.getTotalPrice());
+		register.updateAmountStored(saleInfo.getTotalPriceAsAmount());
+		change.calculateChange(amountPaid);
+		createFinalSaleInformation(change.getChange(), amountPaid);
+		
 		updateSystems();
 		
-		change.calculateChange(amountPaid);
-		
-		saleInfo.setChange(change.getChange()); 
-		saleInfo.setAmountPaid(amountPaid);
-		
 		printer.printReceipt(this.saleInfo);
-		return change.getChange();
 		
 	}
 	/**
@@ -132,5 +128,10 @@ public class Controller {
 		saleLog.storeSaleInformation(0, saleInfo);
 		
 	}
+	
+	private void createFinalSaleInformation(Amount change, Amount amountPaid) {
+		saleInfo = new SaleInformation(this.saleInfo, change, amountPaid);
+	}
+	
 
 }
