@@ -14,7 +14,7 @@ public class Printer {
 	
 	/**
 	 * Prints the String representation of <code>Receipt</code>
-	 * @param receipt
+	 * @param receipt Contains information about the sale.
 	 */
 	public void printReceipt(Receipt receipt) {
 
