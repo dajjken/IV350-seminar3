@@ -1,7 +1,7 @@
 package integration;
 
-import model.SaleInformation;
-import model.TotalPrice;
+import model.DTO.SaleInformation;
+import model.util.TotalPrice;
 
 public class DiscountSystem {
 	
@@ -23,7 +23,7 @@ public class DiscountSystem {
 	 * @return The same totalprice 
 	 */
 	public TotalPrice checkDiscount(int customerID, SaleInformation saleInfo) {
-		if(customerID == customerID)
+		if(true)
 		{
 			System.out.println("Not egible for discount");
 			return saleInfo.getTotalPrice();

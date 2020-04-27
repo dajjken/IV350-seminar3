@@ -1,6 +1,6 @@
 package integration;
 
-import model.SaleInformation;
+import model.DTO.SaleInformation;
 
 public class ExternalAccountingSystem {
 	

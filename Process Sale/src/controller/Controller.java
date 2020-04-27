@@ -7,13 +7,14 @@ import integration.ItemDescription;
 import integration.ExternalInventorySystem;
 import integration.Printer;
 import integration.SaleLog;
-import model.Amount;
-import model.CashRegister;
-import model.Change;
-import model.PresentSaleDTO;
-import model.Sale;
-import model.SaleInformation;
-import model.TotalPrice;
+import model.DTO.PresentSaleDTO;
+import model.DTO.Receipt;
+import model.DTO.SaleInformation;
+import model.POS.CashRegister;
+import model.POS.Sale;
+import model.util.Amount;
+import model.util.Change;
+import model.util.TotalPrice;
 
 /**
  * 	This class is the application's only controller. All calls from the view
@@ -48,7 +49,6 @@ public class Controller {
 		this.printer = printer;
 		
 		this.register = new CashRegister();
-		
 		
 	}
 	
@@ -116,7 +116,7 @@ public class Controller {
 		
 		updateSystems();
 		
-		printer.printReceipt(this.saleInfo);
+		printReceipt();
 		
 	}
 	/**
@@ -129,8 +129,17 @@ public class Controller {
 		
 	}
 	
+	/**
+	 * 
+	 * @param change
+	 * @param amountPaid
+	 */
 	private void createFinalSaleInformation(Amount change, Amount amountPaid) {
 		saleInfo = new SaleInformation(this.saleInfo, change, amountPaid);
+	}
+	
+	private void printReceipt() {
+		printer.printReceipt(new Receipt(this.saleInfo));
 	}
 	
 

@@ -1,6 +1,6 @@
 package integration;
 
-import model.SaleInformation;
+import model.DTO.Receipt;
 
 public class Printer {
 	
@@ -8,23 +8,13 @@ public class Printer {
 	public Printer() {
 	}
 	
-	
-	public void printReceipt(SaleInformation saleInfo) {
+	/**
+	 * Prints the String representation of <code>Recept</code>
+	 * @param receipt
+	 */
+	public void printReceipt(Receipt receipt) {
 
-		StringBuilder sb = new StringBuilder();
-		sb.append("-------Receipt-------\n");
-		sb.append(saleInfo.getItemListAsString());
-		sb.append("---------------------\n");
-		sb.append("Total Price:\n"+saleInfo.getTotalPrice().toString());
-		sb.append("\nAmount paid: "+saleInfo.getAmountPaid());
-		sb.append("\nChange: "+ saleInfo.getChange());
-		sb.append("\n---------------------");
-		sb.append("\nTime of sale:\n");
-		sb.append(saleInfo.getSaleTime()+"\n");
-		sb.append("Date:\n");
-		sb.append(saleInfo.getDate()+"\n");
-		sb.append("---------------------\n");
-		System.out.println(sb.toString()); 
+		System.out.println(receipt.toString());
 	
 	}
 }
