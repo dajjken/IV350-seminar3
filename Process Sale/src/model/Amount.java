@@ -1,5 +1,7 @@
 package model;
 
+import java.math.BigDecimal;
+
 /**
  * This class represent the amount of money used in the program. 
  *
@@ -56,7 +58,8 @@ public class Amount {
 	 * @return the new updated amount
 	 */
 	public Amount multiplyAmountDouble(double number) {
-		System.out.println("MAD: " + amount);
+		BigDecimal exactValue = new BigDecimal(number);
+		System.out.println("MAD:\n amount: " + amount + "VAT: "+ exactValue + "\nequals ");
         return new Amount(amount * number);
     }
 	

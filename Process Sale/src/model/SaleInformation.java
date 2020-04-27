@@ -14,8 +14,8 @@ public class SaleInformation {
 	LocalDate date;
 	TotalPrice totalPrice;
 	Amount totalVAT;
-	Amount amountPaid;
-	Amount change;
+	Amount amountPaid = new Amount(0);
+	Amount change = new Amount(0);
 	String itemListAsString;
 	
 	public SaleInformation(Sale sale)
@@ -26,6 +26,18 @@ public class SaleInformation {
 		this.totalPrice = sale.totalPrice;
 		this.totalVAT = sale.totalVAT;
 		this.itemListAsString = sale.itemsToString(); 
+	}
+	
+	public SaleInformation(SaleInformation saleInfo, Amount change, Amount amountPaid)
+	{
+		this.itemList = saleInfo.itemList;
+		this.saleTime = saleInfo.saleTime;
+		this.date = saleInfo.getDate();
+		this.totalPrice = saleInfo.totalPrice;
+		this.totalVAT = saleInfo.totalVAT;
+		this.itemListAsString = saleInfo.itemListAsString;
+		this.change = change;
+		this.amountPaid = amountPaid;
 	}
 	
 	/**
