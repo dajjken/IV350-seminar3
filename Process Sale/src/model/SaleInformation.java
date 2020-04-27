@@ -61,6 +61,10 @@ public class SaleInformation {
 		return "";
 	}
 
+	public Amount getTotalPriceAsAmount() {
+		return totalPrice.amount;
+	}
+	
 	public TotalPrice getTotalPrice() {
 		return totalPrice;
 	}
@@ -81,16 +85,8 @@ public class SaleInformation {
 		return itemListAsString;
 	}
 	
-	public void setChange(Amount change) {
-		this.change = change;
-	}
-	
 	public Amount getChange() {
 		return this.change;
-	}
-	
-	public void setAmountPaid(Amount amountPaid) {
-		this.amountPaid = amountPaid;
 	}
 	
 	public Amount getAmountPaid() {
