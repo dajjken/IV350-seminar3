@@ -9,16 +9,17 @@ import java.util.Scanner;
 
 public class View {
 	
-	
 	Controller controller;
 
-	
+	/**
+	 * Creates a new instance.
+	 * @param controller
+	 */
 	public View(Controller controller)
 	{
 		this.controller = controller;
 		
 	}
-
 	
 	/**
 	 * 
@@ -34,13 +35,31 @@ public class View {
 	 * 6060 - Cheese
 	 * 
 	 */
-	public void testRun() {
+	public void userTestRun() {
 		
 		Scanner input = new Scanner(System.in);
-		PresentSaleDTO displaySale;
-		SaleInformation saleInfo;
 		
 		controller.startSale();
+
+		userScanningItems();
+
+		SaleInformation saleInfo = controller.stopSale();
+		
+		System.out.println("Checking discount...");
+		controller.checkDiscount(0, saleInfo);
+		
+		System.out.println("Enter amount paid in cash: ");
+		int amountPaid = input.nextInt();
+		
+		System.out.println("Printing Receipt...\n");
+		controller.enterAmountPaid(new Amount(amountPaid));
+		
+	}
+	
+	private void userScanningItems() {
+		Scanner input = new Scanner(System.in);
+		PresentSaleDTO displaySale;
+		
 		int itemID = 1;
 		int quantity = 1;
 		
@@ -57,55 +76,38 @@ public class View {
 			displaySale = controller.findItem(itemID, quantity);
 			System.out.println(displaySale.toString());
 		}
-		
-		saleInfo = controller.stopSale();
-		
-		System.out.println("Checking discount...");
-		System.out.println("No discount available.");
-		
-		
-		System.out.println("Enter amount paid in cash: ");
-		 quantity = input.nextInt();
-		System.out.println("Printing Receipt...\n");
-		controller.enterAmountPaid(new Amount(quantity));
 	}
-	
 	
 	/**
 	 * Simulates a purchase made by a single customer
 	 */
 	public void hardcodedTestRun() {
 		
-		PresentSaleDTO displaySale;
+		
 		SaleInformation saleInfo;
-		Scanner input;
 		
 		controller.startSale();
 	
+		addItemsInLoop();
+		
+		saleInfo=controller.stopSale();
+		
+		System.out.println("Checking discount...");
+		controller.checkDiscount(0, saleInfo);
+		
+		System.out.println("Enter amount paid in cash: 1000");
+		controller.enterAmountPaid(new Amount(1000));
+	}
+	
+	private void addItemsInLoop() {
+		PresentSaleDTO displaySale;
+		
 		for(int i = 1; i<7; i++)
 		{
 			displaySale = controller.findItem(i*1010, i);
 			
 			System.out.println(displaySale.toString()+"\n");
 		}
-		
-		saleInfo=controller.stopSale();
-		
-		System.out.println("Checking discount...");
-		
-		
-		System.out.println("Enter amount paid in cash: 1000");
-		System.out.println("Change: " + controller.enterAmountPaid(new Amount(1000)));
-		
-		
-		
-		/**
-		 * 		ADD CHECKDISCOUNT!!!!!!!!!!!!!!!
-		 */
-		
-		
-
-	
 	}
 	
 }
