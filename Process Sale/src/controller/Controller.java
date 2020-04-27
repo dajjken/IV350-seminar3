@@ -18,7 +18,7 @@ import model.util.TotalPrice;
 
 /**
  * 	This class is the application's only controller. All calls from the view
- *	passes through here.
+ *	pass through here.
  */
 public class Controller {
 
@@ -32,13 +32,11 @@ public class Controller {
 	private Sale sale;
 	private SaleInformation saleInfo;
 	
-//	private Change change;
-	
-	
 	/**
-	 * Creates an instance of the class
+	 * Creates an instance.
+	 * 
 	 * @param systems
-	 * @param printer
+	 * @param printer Represents a Printer that will print {@link}
 	 */
 	public Controller(CreateSystems systems, Printer printer) {
 		
@@ -54,8 +52,7 @@ public class Controller {
 	
 	
 	/**
-	 * This method starts the sale
-	 * 
+	 *  Starts the sale.
 	 */
 	
 	public void startSale() {
@@ -63,11 +60,12 @@ public class Controller {
 	}
 	
 	/**
-	 * This method scans a particular item
+	 *  Scans a particular item and forward that item to the <code>Sale</code> class.
+	 * 	Returns some information about the sale, and the most recent scanned item.
 	 * 
-	 * @param itemID
-	 * @param quantity
-	 * @return current saleInfo, i.e latest scanned item and running total.
+	 * @param itemID Represent the unique ID that every type of item has.
+	 * @param quantity The quantity of the scanned item.
+	 * @return PresentSaleDTO that contains information about the sale.
 	 */
 	public PresentSaleDTO findItem(int itemID, int quantity) {
 
@@ -87,24 +85,27 @@ public class Controller {
 	 * @return Information about the sale as an SaleInformation-object. 
 	 */
 	public SaleInformation stopSale() {
-		
 		return this.saleInfo = sale.stopSale();
 	}
 	
 	/**
-	 *  Check if the customer is egible for discount. Not applied to this task, will 
-	 *  return the same total price stored in saleInfo. 
+	 *  Check if the customer is eligible for discount. Since it's not applied to this task,
+	 *  the same total price stored in saleInfo will be returned. 
+	 *  
 	 * @param customerID Represents the unique id for the customer.
 	 * @param saleInfo Contains information about the sale
-	 * @return The same total price as in the SaleInformation object.
+	 * @return The same total price as in the <code>SaleInformation</code> object.
 	 */
 	public TotalPrice checkDiscount(int customerID, SaleInformation saleInfo) {
 		return discSys.checkDiscount(customerID, saleInfo);
 	}
 	
 	/**
-	 *  
-	 * @param amountPaid
+	 *  Receives cash pays as an <code>Amount</code>, updates amount stored in <code>CashRegister</code>,
+	 *  calculates the <code>Change</code>. Then creates the final <code>SaleInformation</code> that
+	 *  will be used to update the systems. 
+	 *   
+	 * @param amountPaid Represents the cash paid as an <code>Amount</code> object.
 	 * @return
 	 */
 	public void enterAmountPaid(Amount amountPaid) {
@@ -115,24 +116,21 @@ public class Controller {
 		createFinalSaleInformation(change.getChange(), amountPaid);
 		
 		updateSystems();
-		
 		printReceipt();
-		
 	}
-	/**
-	 * 	FIX CUSTOMER ID
-	 */
+	
 	private void updateSystems() {
 		inventory.updateInventory(saleInfo);
 		accounting.updateAccounting(saleInfo);
 		saleLog.storeSaleInformation(0, saleInfo);
-		
 	}
 	
 	/**
-	 * 
-	 * @param change
-	 * @param amountPaid
+	 *  Creates the final <code>SaleInformation</code>, that will be used to update the systems
+	 *  and databases.
+	 
+	 * @param change How much change the customer will receive.
+	 * @param amountPaid The amount paid by the customer.
 	 */
 	private void createFinalSaleInformation(Amount change, Amount amountPaid) {
 		saleInfo = new SaleInformation(this.saleInfo, change, amountPaid);
