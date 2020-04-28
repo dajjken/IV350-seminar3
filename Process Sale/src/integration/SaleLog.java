@@ -1,13 +1,18 @@
 package integration;
 
 import model.DTO.SaleInformation;
-
+/**
+ * Represents the stores sale log, where the information about every purchase is stored.
+ *  Not implemented in this task. 
+ */
 public class SaleLog {
 	
 	private SaleLog saleLog;
 	
+	/**
+	 * Creates an instance.
+	 */
 	public SaleLog() {
-		//System.out.println("SaleLog created");
 	}
 	
 	public SaleLog getSaleLog() {
