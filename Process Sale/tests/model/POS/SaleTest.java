@@ -74,10 +74,7 @@ class SaleTest {
 		assertTrue(resultExpectedToBeTrue, "Stop sale not working. Wont return correct SaleInformation" );
 
 	}
-
-	@Test
-	void testItemsToString() {
-		fail("Not yet implemented"); // TODO
-	}
+	
+	
 
 }
