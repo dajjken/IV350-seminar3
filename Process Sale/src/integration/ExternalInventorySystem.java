@@ -15,7 +15,7 @@ public class ExternalInventorySystem {
 	private ArrayList<ItemDescription> goodsInStock = new ArrayList<ItemDescription>();
 
 	/**
-	 * Create an instance. Adds a few hardcoded number of <code>ItemDescription</code> to the 
+	 * Create an instance. Adds a few hardcoded number of {@link ItemDescription} to the 
 	 * <code>ArrayList</code> in this instance.
 	 */
 	public ExternalInventorySystem() {
@@ -29,25 +29,21 @@ public class ExternalInventorySystem {
 	 * and the description is returned if found, if not, <code>null</code> is returned.
 	 * 
 	 * @param itemID Represents the ID of the item searched for.
-	 * @return the description of the found item. Returns null if item is not found.
+	 * @return Description of the found item. Returns <code>null</code> if item is not found.
 	 */
-	public ItemDescription findItem(int itemID)
-	{
-		
-		for(ItemDescription item: goodsInStock)
-		{
-			if(item.getItemID() == itemID)
-			{
+	public ItemDescription findItem(int itemID) {
+		for(ItemDescription item: goodsInStock) {
+			if(item.getItemID() == itemID) {
 				return item;
 			}
-			
-			
 		}	
 		return null;
 	}
 
 	/**
 	 * Updates the inventory after sale is completed, not implemented.
+	 * 
+	 * @param saleInfo Contains information about the sale as a {@link SaleInformation}-object.
 	 */
 	public void updateInventory(SaleInformation saleInfo) {
 		//some code
