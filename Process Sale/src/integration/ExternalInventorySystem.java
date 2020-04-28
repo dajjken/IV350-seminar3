@@ -19,7 +19,6 @@ public class ExternalInventorySystem {
 	 * <code>ArrayList</code> in this instance.
 	 */
 	public ExternalInventorySystem() {
-		
 		addGoods();
 	}
 
