@@ -1,32 +1,36 @@
 package model.util;
 
+/**
+ * The class represents the total price of the <code>Sale</code>. It contains the fields
+ * priceWithoutVAT and totalVAT. Both store as an <code>Amount</code>-object.
+ *
+ */
 public class TotalPrice {
 
-	Amount amount;
-	Amount totalVAT;
+	private Amount priceWithoutVAT;
+	private Amount totalVAT;
 	
+	/**
+	 *  Creates a new instance.
+	 */
 	public TotalPrice() {
-		this.amount = new Amount(0);
+		this.priceWithoutVAT = new Amount(0);
 		this.totalVAT = new Amount(0);
 		
 	}
 	
-	public TotalPrice(Amount newAmount)
-	{
-		this.amount = newAmount;
-	}
-	
 	/**
-	 * Adds a amount to the current totalprice.
+	 * Adds a <code>Amount</code> to the current total price.
 	 * @param newAmount	represents the amount to be added.
 	 */
 	public void addToTotalPrice(Amount newAmount) {
-		this.amount = this.amount.addAmounts(newAmount);
+		this.priceWithoutVAT = this.priceWithoutVAT.addAmounts(newAmount);
 		
 	}
+	
 	/**
-	 * 
-	 * @param number
+	 * Updates the totalVAT field by adding a new <code>Amount</code>
+	 * @param number represent the amount to be added.
 	 */
 	public void addToTotalVAT(Amount number) {
 		
@@ -35,26 +39,27 @@ public class TotalPrice {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Returns the final total price, ie. price-without-VAT and VAT-total added together.
+	 * @return the final total price as an <code>Amount</code>-object.
 	 */
-	public Amount addPriceAndVAT() {
-		return this.amount.addAmounts(totalVAT);
+	public Amount getFinalPrice() {
+		return this.priceWithoutVAT.addAmounts(totalVAT);
 	}
 	
-	public Amount getTotalPrice() {
-		return amount;
+	/**
+	 *  Get the <code>Amount</code> priceWithoutVat field.
+	 * @return priceWithoutVAT
+	 */
+	public Amount getPriceWithoutVAT() {
+		return priceWithoutVAT;
 	}
 	
+	/**
+	 * Gets the <code>Amount</code> totalVAT field.
+	 * @return totalVAT
+	 */
 	public Amount getTotalVAT() {
 		return totalVAT;
 	}
 
-	/**
-	 * 
-	 */
-	public String toString()
-	{
-		return amount.toString();
-	}
 }
