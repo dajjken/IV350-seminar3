@@ -1,13 +1,25 @@
 package model.DTO;
 
+/**
+ * The class represents the receipt that will be printed.
+ *
+ */
 public class Receipt {
 
 	private SaleInformation saleInfo;
 	
+	/**
+	 * Creates a new instance by using the <code>SaleInformation</code>.
+	 * @param saleInfo contains information about the <code>Sale</code>.
+	 */
 	public Receipt(SaleInformation saleInfo) {
 		this.saleInfo = saleInfo;
 	}
 	
+	/**
+	 * Returns the String-representation of this instance. Will be used when 
+	 * printing the receipt.  
+	 */
 	@Override
 	public String toString() {
 		
