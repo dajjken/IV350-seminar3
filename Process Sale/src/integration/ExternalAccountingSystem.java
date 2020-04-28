@@ -1,6 +1,7 @@
 package integration;
 
 import model.DTO.SaleInformation;
+import model.POS.Sale;
 
 /**
  * This class represent an external accounting system at a retail store. The usage of
@@ -13,15 +14,16 @@ public class ExternalAccountingSystem {
 	private ExternalAccountingSystem accounting;
 	
 	/**
-	 * Create an instance.
+	 * Creates an instance.
 	 */
 	public ExternalAccountingSystem() {
 	
 	}
 	
 	/**
-	 * Updates the accounting-system after completed <code>Sale</code>, not implemented.
-	 * @param saleInfo Contains all info about the sale as <code>SaleInformation</code>-object.
+	 * Updates the accounting-system after completed {@link Sale}. Not implemented.
+	 * 
+	 * @param saleInfo Contains all info about the sale as {@link SaleInformation}-object.
 	 */
 	public void updateAccounting(SaleInformation saleInfo) {
 		//some code
