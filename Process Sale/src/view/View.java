@@ -7,6 +7,10 @@ import model.util.Amount;
 
 import java.util.Scanner;
 
+/**
+ *	This class represents the User Interface in the application. 
+ *
+ */
 public class View {
 	
 	Controller controller;
@@ -20,6 +24,8 @@ public class View {
 		this.controller = controller;
 		
 	}
+	
+	
 	
 	/**
 	 * 
@@ -40,21 +46,15 @@ public class View {
 		Scanner input = new Scanner(System.in);
 		
 		controller.startSale();
-
 		userScanningItems();
-
 		SaleInformation saleInfo = controller.stopSale();
-		
 		System.out.println("Checking discount...");
 		System.out.println("\nTotal price: " + 
 				controller.checkDiscount(0, saleInfo).getFinalPrice());
-		
 		System.out.println("Enter amount paid in cash: ");
 		int amountPaid = input.nextInt();
-		
 		System.out.println("Printing Receipt...\n");
 		controller.enterAmountPaid(new Amount(amountPaid));
-		
 	}
 	
 	private void userScanningItems() {
@@ -83,37 +83,4 @@ public class View {
 				System.out.println(displaySale.toString());
 		}
 	}
-	
-	/**
-	 * Simulates a purchase made by a single customer
-	 */
-	public void hardcodedTestRun() {
-		
-		
-		SaleInformation saleInfo;
-		
-		controller.startSale();
-	
-		addItemsInLoop();
-		
-		saleInfo=controller.stopSale();
-		
-		System.out.println("Checking discount...");
-		controller.checkDiscount(0, saleInfo);
-		
-		System.out.println("Enter amount paid in cash: 1000");
-		controller.enterAmountPaid(new Amount(1000));
-	}
-	
-	private void addItemsInLoop() {
-		PresentSaleDTO displaySale;
-		
-		for(int i = 1; i<7; i++)
-		{
-			displaySale = controller.findItem(i*1010, i);
-			
-			System.out.println(displaySale.toString()+"\n");
-		}
-	}
-	
 }
