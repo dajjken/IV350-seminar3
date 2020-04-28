@@ -18,7 +18,6 @@ public class Sale {
 	LocalTime saleTime;
 	ArrayList<Item> itemsInPurchase = new ArrayList<>();
 	TotalPrice totalPrice;
-	//Amount totalPriceWithVAT;
 	
 	PresentSaleDTO displaySale;
 	
@@ -29,8 +28,6 @@ public class Sale {
 	{
 		saleTime = LocalTime.now();
 		totalPrice = new TotalPrice();
-		
-		System.out.println("Sale started in: " + saleTime);
 	}
 	
 	/**
