@@ -28,13 +28,13 @@ public class Receipt {
 		sb.append(saleInfo.getItemListAsString());
 		sb.append("---------------------\n");
 		sb.append("VAT: " + saleInfo.getTotalVAT());
-		sb.append("\nTotal Price:\n"+saleInfo.getTotalPrice().getFinalPrice());
+		sb.append("\nTotal Price: "+saleInfo.getTotalPrice().getFinalPrice());
 		sb.append("\nAmount paid: "+saleInfo.getAmountPaid());
 		sb.append("\nChange: "+ saleInfo.getChange());
 		sb.append("\n---------------------");
-		sb.append("\nTime of sale:\n");
+		sb.append("\nTime of sale: ");
 		sb.append(getHourAndMinute()+"\n");
-		sb.append("Date:\n");
+		sb.append("Date: ");
 		sb.append(saleInfo.getDate()+"\n");
 		sb.append("---------------------\n");
 		sb.append("Thank you for shopping\n@ FAKE STORE™");
