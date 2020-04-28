@@ -27,6 +27,7 @@ public class Amount {
 	}
 	/**
 	 * Adds another amount to the current instance of this class.
+	 * 
 	 * @param Represents the amount that will be added.
 	 * @return the new updated amount
 	 */
@@ -39,7 +40,7 @@ public class Amount {
 	}
 	/**
 	 * Subtracts the current instance from another amount-object.
-	 * @param biggerAmount Represents the amount that will be subtracted from
+	 * @param biggerAmount Represents the amount that the current instance will be subtracted from
 	 * @return the new updated amount.
 	 */
 	public Amount subractCurrentAmount(Amount biggerAmount) {

@@ -2,7 +2,7 @@ package model.util;
 
 /**
  * The class represents the total price of the <code>Sale</code>. It contains the fields
- * priceWithoutVAT and totalVAT. Both store as an <code>Amount</code>-object.
+ * priceWithoutVAT and totalVAT. Both stored as an <code>Amount</code>-object.
  *
  */
 public class TotalPrice {
