@@ -28,7 +28,7 @@ public class SaleInformation {
 		this.saleTime = sale.getSaleTime();
 		this.date = LocalDate.now();
 		this.totalPrice = sale.getTotalPrice();
-		this.totalVAT = sale.getTotalVAT();
+		this.totalVAT = totalPrice.getTotalVAT();
 		this.itemListAsString = sale.itemsToString(); 
 	}
 	
