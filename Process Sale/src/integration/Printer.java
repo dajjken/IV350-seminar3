@@ -3,17 +3,19 @@ package integration;
 import model.DTO.Receipt;
 
 /**
- *Represents a Printer that prints receipts. 
+ *Represents a Printer with the only function to print receipts. 
  *
  */
 public class Printer {
 	
-	
+	/**
+	 * Creates an instance.
+	 */
 	public Printer() {
 	}
 	
 	/**
-	 * Prints the String representation of <code>Receipt</code>
+	 * Prints the <code>String<code> representation of {@link Receipt }
 	 * @param receipt Contains information about the sale.
 	 */
 	public void printReceipt(Receipt receipt) {
