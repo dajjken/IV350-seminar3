@@ -16,7 +16,7 @@ public class Receipt {
 		sb.append(saleInfo.getItemListAsString());
 		sb.append("---------------------\n");
 		sb.append("VAT: " + saleInfo.getTotalVAT());
-		sb.append("\nTotal Price:\n"+saleInfo.getTotalPrice().addPriceAndVAT());
+		sb.append("\nTotal Price:\n"+saleInfo.getTotalPrice().getFinalPrice());
 		sb.append("\nAmount paid: "+saleInfo.getAmountPaid());
 		sb.append("\nChange: "+ saleInfo.getChange());
 		sb.append("\n---------------------");

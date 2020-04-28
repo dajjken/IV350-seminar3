@@ -17,7 +17,7 @@ public class Change {
 	 */
 	public Change(SaleInformation saleInfo)
 	{
-		this.amount = saleInfo.getTotalPrice().addPriceAndVAT();
+		this.amount = saleInfo.getTotalPrice().getFinalPrice();
 	}
 
 	/**

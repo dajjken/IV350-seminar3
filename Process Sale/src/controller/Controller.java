@@ -111,7 +111,7 @@ public class Controller {
 	public void enterAmountPaid(Amount amountPaid) {
 		Change change = new Change(this.saleInfo);
 		
-		register.updateAmountStored(saleInfo.getTotalPriceAsAmount());
+		register.updateAmountStored(saleInfo.getTotalPrice().getFinalPrice());
 		change.calculateChange(amountPaid);
 		createFinalSaleInformation(change.getChange(), amountPaid);
 		

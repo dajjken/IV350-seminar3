@@ -32,13 +32,13 @@ public class PresentSaleDTO {
 		return mostRecentScannedItem.getItemDescription().getName() + "\t\t"
 		+mostRecentScannedItem.getQuantity()+"*\t"+ mostRecentScannedItem.getItemDescription().getPrice()
 			+"\nVAT for this item: " + mostRecentScannedItem.getItemDescription().getVATCost()		
-			+"*"+mostRecentScannedItem.getQuantity()+"\nTotal Price: \t\t" + totalPrice.addPriceAndVAT()+"\n";
+			+"*"+mostRecentScannedItem.getQuantity()+"\nTotal Price: \t\t" + totalPrice.getFinalPrice()+"\n";
 		}
 		else
 			return mostRecentScannedItem.getItemDescription().getName() + "\t\t\t"
 				+ mostRecentScannedItem.getItemDescription().getPrice()
 				+"\nVAT for this item: " + mostRecentScannedItem.getItemDescription().getVATCost()		
-				+"\nTotal Price: \t\t" + totalPrice.addPriceAndVAT()+"\n";
+				+"\nTotal Price: \t\t" + totalPrice.getFinalPrice()+"\n";
 	}
 
 }

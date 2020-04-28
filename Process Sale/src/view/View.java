@@ -47,7 +47,7 @@ public class View {
 		
 		System.out.println("Checking discount...");
 		System.out.println("\nTotal price: " + 
-				controller.checkDiscount(0, saleInfo).addPriceAndVAT());
+				controller.checkDiscount(0, saleInfo).getFinalPrice());
 		
 		System.out.println("Enter amount paid in cash: ");
 		int amountPaid = input.nextInt();
