@@ -180,7 +180,6 @@ public class Sale {
 	 * @return The list of all items. 
 	 */
 	public ArrayList<Item> getItemsInPurchase() {
-		System.out.println("Ewhen is this used?");
 		return itemsInPurchase;
 	}
 	
