@@ -18,7 +18,7 @@ public class Sale {
 	LocalTime saleTime;
 	ArrayList<Item> itemsInPurchase = new ArrayList<>();
 	TotalPrice totalPrice;
-	Amount totalPriceWithVAT;
+	//Amount totalPriceWithVAT;
 	
 	PresentSaleDTO displaySale;
 	
@@ -35,6 +35,7 @@ public class Sale {
 	
 	/**
 	 * Adds a item to the list of goods to be purchased
+	 * 
 	 * @param newItem The item to be added
 	 * @param quantity Number of items to be added
 	 */
@@ -42,28 +43,18 @@ public class Sale {
 		updateList(newItem, quantity);
 		updateTotalPriceAndVAT(newItem, quantity);
 		
-		Item recentItem =getMostRecentItem(newItem);
+		Item recentItem = getMostRecentItem(newItem);
 		
 		return new PresentSaleDTO(recentItem, totalPrice);
 	}
 
-	private void updateTotalPriceAndVAT(ItemDescription item, int quantity) {
-		Amount priceOfItem = calculatePriceOfItem(item, quantity);
-		
-		totalPrice.addToTotalPrice(priceOfItem);
-		Amount VAT = calulateVAT(item.getVATRate(), priceOfItem);
-		totalPrice.addToTotalVAT(VAT);
-		
-	}
-	
-	private Amount calulateVAT (double VATrate, Amount price) {
-		return price.multiplyAmountDouble(VATrate);
-	}
-	
-	private Amount calculatePriceOfItem(ItemDescription item, int quantity) {
-		return item.getPrice().multiplyAmount(quantity);
-	}
-	
+	/**
+	 * Updates the <code>ArrayList</code> of items with a new Item. If the <code></code>Item is already
+	 * in the list, then the quantity of that item increases.
+	 * 
+	 * @param itemToBeChecked Is the the <code>ItemDescription</code> of the item to be added.
+	 * @param quantity The quantity of the item.
+	 */
 	private void updateList(ItemDescription itemToBeChecked, int quantity) {
 		if(this.itemIsInList(itemToBeChecked)) {
 			for(Item item: itemsInPurchase) {
@@ -77,6 +68,32 @@ public class Sale {
 		}		
 	}
 	
+	private void updateTotalPriceAndVAT(ItemDescription item, int quantity) {
+		Amount priceOfItem = calculatePriceOfItem(item, quantity);
+		Amount VAT = calulateVAT(item.getVATRate(), priceOfItem);
+	
+		totalPrice.addToTotalPrice(priceOfItem);
+		totalPrice.addToTotalVAT(VAT);
+		
+	}
+	
+	private Amount calulateVAT (double VATrate, Amount price) {
+		return price.multiplyAmountDouble(VATrate);
+	}
+	
+	private Amount calculatePriceOfItem(ItemDescription item, int quantity) {
+		return item.getPrice().multiplyAmount(quantity);
+	}
+	
+	
+	
+	/**
+	 * Checks if the <code>ArrayList</code> of items contains an <code>Item</code> with a
+	 * matching ID as the parameter <code>ItemDescription</code>.
+	 * 
+	 * @param checkedItem Represent the description of the item to be checked.
+	 * @return <code>True</code> if the list contains a matching item, else <code>False</code>.
+	 */
 	private boolean itemIsInList(ItemDescription checkedItem)
 	{
 		for(Item item: itemsInPurchase)
@@ -88,29 +105,35 @@ public class Sale {
 		return false;
 	}
 	
+	/**
+	 * Returns the most recent scanned item.
+	 * @param itemDescription <code>ItemDescription</code> of the most recent scanned item.
+	 * @return The <code>Item</code> searched after.
+	 */
 	private Item getMostRecentItem(ItemDescription itemDescription) {
 		int index = getIndexOfItemInList(itemDescription);
-		System.out.println("index is: " + index);
 		Item newItem = itemsInPurchase.get(index);
-		System.out.println("item is:"+newItem.itemDesc.getName());
 		return newItem;
 	}
 	
+	/**
+	 * Searches the list of items for a specified item. If a matching item is found, 
+	 * the index of that item is returned. If not, -1 is returned.
+	 * @param itemDesc <code>ItemDescription</code> of the item searched for.
+	 * @return The index of the searched item if found, else -1.
+	 */
 	private int getIndexOfItemInList(ItemDescription itemDesc) {
 		int index = -1;
 		for(Item item: itemsInPurchase) {
-			if(itemIsInList(itemDesc)) {
-			index= itemsInPurchase.indexOf(item);
-			System.out.println("inside getIndex: index is" + index);
-			break;
+			if(item.itemDesc.equalID(itemDesc)) {
+				index= itemsInPurchase.indexOf(item);
 			}
 		}
-
 		return index;
 	}
-	
+
 	/**
-	 * 
+	 * Stops the sale and returns the first <code>SaleInformation</code>.
 	 */
 	public SaleInformation stopSale() {
 		SaleInformation saleInfo = new SaleInformation(this);
@@ -133,27 +156,28 @@ public class Sale {
 	}
 	
 	/**
-	 * 
-	 * @return The total price as an Amount-type.
+	 * Returns the <code>TotalPrice</code> that contains the total price and VAT-total.
+	 * @return The total price of the current <code>Sale</code>.
 	 */
 	public TotalPrice getTotalPrice() {
 		return totalPrice;
 	}
 
+	/**
+	 * Returns the time when the <code>Sale</code> started.
+	 * @return saleTime as a <code>LocalTime</code>-object.
+	 */
 	public LocalTime getSaleTime() {
 		return saleTime;
 	}
 
+	/**
+	 * Returns the <code>ArrayList</code>.
+	 * @return The list of all items. 
+	 */
 	public ArrayList<Item> getItemsInPurchase() {
+		System.out.println("Ewhen is this used?");
 		return itemsInPurchase;
-	}
-
-	public Amount getTotalVAT() {
-		return totalPrice.getTotalVAT();
-	}
-
-	public Amount getTotalPriceWithVAT() {
-		return totalPriceWithVAT;
 	}
 	
 }
