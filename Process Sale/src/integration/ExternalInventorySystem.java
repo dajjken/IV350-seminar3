@@ -2,29 +2,33 @@ package integration;
 
 import java.util.ArrayList;
 
-import model.Amount;
-import model.SaleInformation;
+import model.DTO.SaleInformation;
+import model.util.Amount;
 
+/**
+ * Represents a inventory at a retail store. Since no real database is used, a few hardcoded 
+ * items is added to the created instance of this class.  
+ *
+ */
 public class ExternalInventorySystem {
 	
-//	private ExternalInventorySystem inventory;
 	private ArrayList<ItemDescription> goodsInStock = new ArrayList<ItemDescription>();
 
+	/**
+	 * Create an instance. Adds a few hardcoded number of <code>ItemDescription</code> to the 
+	 * <code>ArrayList</code> in this instance.
+	 */
 	public ExternalInventorySystem() {
 		
 		addGoods();
-		//System.out.println("Inventory created");	
 	}
-/*
-	public ExternalInventorySystem getExternalInventorySystem()
-	{
-		return this;
-	}
-*/	
+
 	
 	/**
-	 * Searches the database for a certain item.
-	 * @param itemID Represents the item searched for.
+	 * Searches the database for a certain <code>ItemDescription</code>. The itemID is compared
+	 * and the description is returned if found, if not, <code>null</code> is returned.
+	 * 
+	 * @param itemID Represents the ID of the item searched for.
 	 * @return the description of the found item. Returns null if item is not found.
 	 */
 	public ItemDescription findItem(int itemID)
@@ -41,27 +45,24 @@ public class ExternalInventorySystem {
 		}	
 		return null;
 	}
-	
-	private void printList() {
-		for(ItemDescription item: goodsInStock)
-		{
-			System.out.println(item);
-		}
-	}
+
 	/**
-	 * Updates the inventory after sale is completed, not implemented
+	 * Updates the inventory after sale is completed, not implemented.
 	 */
 	public void updateInventory(SaleInformation saleInfo) {
 		//some code
 	}
 	
+	/**
+	 * The hardcoded inventory.
+	 */
 	private void addGoods() {
-		goodsInStock.add(new ItemDescription(new Amount(15), "Milk", 2, 1010));
-		goodsInStock.add(new ItemDescription(new Amount(25), "Bread", 2, 2020));
-		goodsInStock.add(new ItemDescription(new Amount(10), "Flour", 2, 3030));
-		goodsInStock.add(new ItemDescription(new Amount(20), "Pasta", 2, 4040));
-		goodsInStock.add(new ItemDescription(new Amount(35), "Coffe", 2, 5050));
-		goodsInStock.add(new ItemDescription(new Amount(85), "Cheese", 2, 6060));
+		goodsInStock.add(new ItemDescription(new Amount(50), "Butter", 0.06, 1010));
+		goodsInStock.add(new ItemDescription(new Amount(25), "Bread", 0.12, 2020));
+		goodsInStock.add(new ItemDescription(new Amount(12), "Flour", 0.25, 3030));
+		goodsInStock.add(new ItemDescription(new Amount(16), "Pasta", 0.25, 4040));
+		goodsInStock.add(new ItemDescription(new Amount(40), "Coffee", 0.25, 5050));
+		goodsInStock.add(new ItemDescription(new Amount(100), "Cheese", 0.12, 6060));
 	
 	}
 

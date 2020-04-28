@@ -1,12 +1,11 @@
 package integration;
 
-import model.Amount;
+import model.util.Amount;
 
 /**
  * This class represents an item, and its information 
  * stored in an external database.
  * 
- *
  */
 public class ItemDescription {
 	
@@ -62,8 +61,34 @@ public class ItemDescription {
 	}
 	
 	/**
-	 *  TEMPORARY, REMOVE LATER!!!!!!!!!!!!!!!!!
+	 * Returns the VAT-rate of the current object. 
+	 * @return The VAT rate as a double.
 	 */
+	public double getVATRate() {
+		return this.VATRate;
+	}
+	
+	
+	/**
+	 * 
+	 * @param otherItem
+	 * @return
+	 */
+	public boolean equalID(ItemDescription otherItem) {
+		if(this.itemID==otherItem.getItemID())
+			return true;
+		else 
+			return false;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Amount getVATCost() {
+		return price.multiplyAmountDouble(VATRate);
+	}
+	
 	public String toString()
 	{
 		return this.name + " id: " + this.itemID;

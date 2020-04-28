@@ -15,7 +15,7 @@ public class Main {
 		View view = new View(controller);
 		
 		//view.hardcodedTestRun();
-		view.testRun();
+		view.userTestRun();
 		
 		
 		
