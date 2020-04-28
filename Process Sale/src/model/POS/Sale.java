@@ -34,9 +34,11 @@ public class Sale {
 	}
 	
 	/**
-	 * Adds a item to the list of goods to be purchased
+	 * Adds a <code>Item</code> to the <code>ArrayList</code> of goods to be purchased. Updates the
+	 * <code>TotalPrice</code> and returns the most recent scanned item and some information about the 
+	 * sale as a <code>PresentSaleDTO</code>-object.
 	 * 
-	 * @param newItem The item to be added
+	 * @param newItem The <code></code>ItemDescription of the <code>Item</code> to be added
 	 * @param quantity Number of items to be added
 	 */
 	public PresentSaleDTO addItemToList(ItemDescription newItem, int quantity) {
@@ -60,6 +62,7 @@ public class Sale {
 			for(Item item: itemsInPurchase) {
 				if(item.itemDesc.equalID(itemToBeChecked)) {
 					item.updateQuantity(quantity);
+					break;
 				}
 			}
 		}	
@@ -67,6 +70,7 @@ public class Sale {
 			itemsInPurchase.add(new Item(itemToBeChecked, quantity));
 		}		
 	}
+	
 	
 	private void updateTotalPriceAndVAT(ItemDescription item, int quantity) {
 		Amount priceOfItem = calculatePriceOfItem(item, quantity);
