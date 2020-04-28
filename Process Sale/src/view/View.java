@@ -24,9 +24,7 @@ public class View {
 		this.controller = controller;
 		
 	}
-	
-	
-	
+
 	/**
 	 * 
 	 * This method simulates a purchase. The user enters the id of the item, and 
