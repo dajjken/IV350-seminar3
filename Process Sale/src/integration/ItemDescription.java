@@ -3,9 +3,8 @@ package integration;
 import model.util.Amount;
 
 /**
- * This class represents an item, and its information 
+ * This class represents the information about an item 
  * stored in an external database.
- * 
  */
 public class ItemDescription {
 	
@@ -14,16 +13,12 @@ public class ItemDescription {
 	private double VATRate;
 	private int itemID;
 	
-	public ItemDescription() {	
-		
-	}
-	
 	/**
 	 * Creates a new instance of this type.
 	 * @param price The price of the item.
 	 * @param name The name of the item.
 	 * @param VATRate The VAT-rate of the item.
-	 * @param itemID THe itemID of the item. Could represent a barcode or something similar.
+	 * @param itemID The itemID of the item.
 	 */
 	public ItemDescription(Amount price, String name, double VATRate, int itemID) {
 		this.price = price;
@@ -34,8 +29,9 @@ public class ItemDescription {
 	}
 	
 	/**
-	 *  Returns the itemID of the current ItemDescription-object.
-	 * @return the itemID of this instance.
+	 *  Returns the itemID of the current instance.
+	 *  
+	 * @return The itemID of this instance.
 	 */
 	public int getItemID()
 	{
@@ -43,8 +39,9 @@ public class ItemDescription {
 	}
 	
 	/**
-	 * Returns the price as an Amount-object.
-	 * @return the price of this instance.
+	 * Returns the price as an {@link Amount}-object.
+	 * 
+	 * @return The price of this instance.
 	 */
 	public Amount getPrice()
 	{
@@ -52,8 +49,8 @@ public class ItemDescription {
 	}
 	
 	/**
-	 * 
-	 * @return the name of this instance
+	 * Returns the name of the item as a <code>String</code>
+	 * @return The name of this instance
 	 */
 	public String getName()
 	{
@@ -61,8 +58,8 @@ public class ItemDescription {
 	}
 	
 	/**
-	 * Returns the VAT-rate of the current object. 
-	 * @return The VAT rate as a double.
+	 * Returns the VAT-rate of the current instance. 
+	 * @return The VAT rate as a <code>double</code>.
 	 */
 	public double getVATRate() {
 		return this.VATRate;
@@ -70,9 +67,11 @@ public class ItemDescription {
 	
 	
 	/**
+	 * If two <code>ItemDescription</code> objects have the same itemID, they are
+	 * considered equal.
 	 * 
-	 * @param otherItem
-	 * @return
+	 * @param otherItem The <code>ItemDescription</code> to compare with this instance.
+	 * @return <code>true</code> if the objects are equal. <code>false</code> if they are not.
 	 */
 	public boolean equalID(ItemDescription otherItem) {
 		if(this.itemID==otherItem.getItemID())
@@ -82,16 +81,11 @@ public class ItemDescription {
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
+	 * Returns the VAT-cost of this instance as an <code>Amount</code>-object.  
+	 * @return The VAT-cost of the item.
+	*/
 	public Amount getVATCost() {
 		return price.multiplyAmountDouble(VATRate);
 	}
 	
-	public String toString()
-	{
-		return this.name + " id: " + this.itemID;
-		
-	}
 }
