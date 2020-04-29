@@ -3,15 +3,15 @@ package model.POS;
 import integration.ItemDescription;
 /**
  * This class represent a type of item being purchased
- *
  */
 public class Item {
 	
-	ItemDescription itemDesc;
-	int quantity;
+	private ItemDescription itemDesc;
+	private int quantity;
 	
 	/**
 	 * Creates an instance.
+	 * 
 	 * @param itemDesc Represents the items description stored in the database.
 	 * @param quantity The quantity of the item being purchased.
 	 */
@@ -22,6 +22,7 @@ public class Item {
 	}
 	
 	/**
+	 * Returns the {@link ItemDescription} field.
 	 * 
 	 * @return the ItemDescription of the current instance.
 	 */
@@ -30,11 +31,17 @@ public class Item {
 		return itemDesc;
 	}
 	
+	/**
+	 * Returns the quantity if this instance.
+	 * 
+	 * @return The quantity as an <code>int</code>.
+	 */
 	public int getQuantity() {
 		return quantity;
 	}
 	
 	/**
+	 * Updates the quantity of the current instance.
 	 * 
 	 * @param addQuantity Represents the quantity being added to the current instance.
 	 */
@@ -44,8 +51,9 @@ public class Item {
 	}
 	
 	/**
-	 *  Returns the object as a String.
+	 *  Returns a <code>String</code>-representation of the current instance.
 	 */
+	@Override
 	public String toString()
 	{
 		if(quantity>1)
