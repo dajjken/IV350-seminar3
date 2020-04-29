@@ -10,7 +10,8 @@ import model.util.Amount;
 import model.util.TotalPrice;
 
 /**
- * This class represents a purchase of goods made by a single customer.
+ * This class represents a purchase of goods made by a single customer. 
+ * Contains most of the business-logic in this application. 
  * 
  */
 public class Sale {
@@ -22,7 +23,7 @@ public class Sale {
 	PresentSaleDTO displaySale;
 	
 	/**
-	 * Creates a new instance.
+	 * Creates a new instance. The time of sale is when the instance is initiated.
 	 */
 	public Sale()
 	{
@@ -31,28 +32,27 @@ public class Sale {
 	}
 	
 	/**
-	 * Adds a <code>Item</code> to the <code>ArrayList</code> of goods to be purchased. Updates the
-	 * <code>TotalPrice</code> and returns the most recent scanned item and some information about the 
-	 * sale as a <code>PresentSaleDTO</code>-object.
+	 * Adds a {@link Item} to the <code>ArrayList</code> of goods to be purchased. Updates the
+	 * {@link TotalPrice}, both the total price and VAT-total. Returns the most recent scanned item and some information about the 
+	 * sale as a {@link PresentSaleDTO}-object.
 	 * 
-	 * @param newItem The <code></code>ItemDescription of the <code>Item</code> to be added
-	 * @param quantity Number of items to be added
+	 * @param newItem The {@link ItemDescription} of the <code>Item</code> to be added.
+	 * @param quantity Represents the number of items to be added.
 	 */
 	public PresentSaleDTO addItemToList(ItemDescription newItem, int quantity) {
 		updateList(newItem, quantity);
 		updateTotalPriceAndVAT(newItem, quantity);
 		
 		Item recentItem = getMostRecentItem(newItem);
-		
 		return new PresentSaleDTO(recentItem, totalPrice);
 	}
 
 	/**
-	 * Updates the <code>ArrayList</code> of items with a new Item. If the <code></code>Item is already
-	 * in the list, then the quantity of that item increases.
+	 * Updates the <code>ArrayList</code> with a new <code>Item</code>. If the <code>Item</code> is already
+	 * in the list, then the quantity of that <code>Item</code> increases.
 	 * 
-	 * @param itemToBeChecked Is the the <code>ItemDescription</code> of the item to be added.
-	 * @param quantity The quantity of the item.
+	 * @param itemToBeChecked Is the the <code>ItemDescription</code> of the <code>Item</code> to be added.
+	 * @param quantity The quantity of the <code>Item</code>.
 	 */
 	private void updateList(ItemDescription itemToBeChecked, int quantity) {
 		if(this.itemIsInList(itemToBeChecked)) {
@@ -75,7 +75,6 @@ public class Sale {
 	
 		totalPrice.addToTotalPrice(priceOfItem);
 		totalPrice.addToTotalVAT(VAT);
-		
 	}
 	
 	private Amount calulateVAT (double VATrate, Amount price) {
@@ -90,7 +89,7 @@ public class Sale {
 	
 	/**
 	 * Checks if the <code>ArrayList</code> of items contains an <code>Item</code> with a
-	 * matching ID as the parameter <code>ItemDescription</code>.
+	 * matching ID with the parameter <code>ItemDescription</code>.
 	 * 
 	 * @param checkedItem Represent the description of the item to be checked.
 	 * @return <code>True</code> if the list contains a matching item, else <code>False</code>.
@@ -109,7 +108,7 @@ public class Sale {
 	/**
 	 * Returns the most recent scanned item.
 	 * @param itemDescription <code>ItemDescription</code> of the most recent scanned item.
-	 * @return The <code>Item</code> searched after.
+	 * @return The <code>Item</code> searched for.
 	 */
 	private Item getMostRecentItem(ItemDescription itemDescription) {
 		int index = getIndexOfItemInList(itemDescription);
@@ -118,10 +117,10 @@ public class Sale {
 	}
 	
 	/**
-	 * Searches the list of items for a specified item. If a matching item is found, 
+	 * Searches the list of items for a specified <code>Item</code>. If a matching <code>Item</code> is found, 
 	 * the index of that item is returned. If not, -1 is returned.
 	 * @param itemDesc <code>ItemDescription</code> of the item searched for.
-	 * @return The index of the searched item if found, else -1.
+	 * @return The index of the searched <code>Item</code> if found, else <code>-1</code>.
 	 */
 	private int getIndexOfItemInList(ItemDescription itemDesc) {
 		int index = -1;
@@ -134,7 +133,7 @@ public class Sale {
 	}
 
 	/**
-	 * Stops the sale and returns the first <code>SaleInformation</code>.
+	 * Stops the <code>Sale</code> and returns the first instance of <code>SaleInformation</code>.
 	 */
 	public SaleInformation stopSale() {
 		SaleInformation saleInfo = new SaleInformation(this);
@@ -142,8 +141,8 @@ public class Sale {
 	}
 	
 	/**
-	 *  Returns the itemList as a string, will be used when printing receipt.
-	 * @return String representation of the list if items.
+	 *  Returns the itemList as a <code>String</code>, will be used when printing receipt.
+	 * @return <code>String</code>-representation of the list if items.
 	 */
 	public String itemsToString() {
 		StringBuilder builder = new StringBuilder();
