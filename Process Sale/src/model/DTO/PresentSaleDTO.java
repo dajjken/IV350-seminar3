@@ -4,7 +4,7 @@ import model.POS.Item;
 import model.util.TotalPrice;
 
 /**
- * This class is used as an DTO, and displays some information about the sale. 
+ * This class is used as an DTO, and contains some information about the sale. 
  *
  */
 public class PresentSaleDTO {
@@ -14,8 +14,9 @@ public class PresentSaleDTO {
 
 	/**
 	 * Creates an instance
-	 * @param scannedItem Represent the most recent scanned <code>Item</code>.
-	 * @param totalPrice The current <code>TotalPrice</code> of the sale.
+	 * 
+	 * @param scannedItem Represent the most recent scanned {@link Item}.
+	 * @param totalPrice The current {@link TotalPrice} of the sale.
 	 */
 	public PresentSaleDTO(Item scannedItem, TotalPrice totalPrice) {
 		this.mostRecentScannedItem = scannedItem;
@@ -24,8 +25,9 @@ public class PresentSaleDTO {
 	}
 	
 	/**
-	 * Returns a String-representation of this instance. 
+	 * Returns a <code>String</code>-representation of this instance. 
 	 */
+	@Override
 	public String toString()
 	{
 		if(mostRecentScannedItem.getQuantity()>1) {
