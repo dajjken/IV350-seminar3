@@ -28,7 +28,6 @@ public class TotalPrice {
 	 */
 	public void addToTotalPrice(Amount newAmount) {
 		this.priceWithoutVAT = this.priceWithoutVAT.addAmounts(newAmount);
-		
 	}
 	
 	/**
@@ -37,9 +36,7 @@ public class TotalPrice {
 	 * @param number Represent the amount to be added.
 	 */
 	public void addToTotalVAT(Amount number) {
-		
 		this.totalVAT = this.totalVAT.addAmounts(number);
-		
 	}
 	
 	/**
