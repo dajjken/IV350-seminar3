@@ -38,9 +38,6 @@ class SaleTest {
 	@Test
 	void testAddItemToEmptyList() {
 		Sale testSale = new Sale();
-		
-		
-		
 		ItemDescription fakeTestingItem = new ItemDescription(new Amount(16), "Milk", 0.25, 1010);
 		String expResult = fakeTestingItem.getName();
 
@@ -69,12 +66,6 @@ class SaleTest {
 				&& expSaleInfo.getItemListAsString().equals(resultSaleInfo.getItemListAsString())) {
 			resultExpectedToBeTrue = true;
 		}
-			
-		
 		assertTrue(resultExpectedToBeTrue, "Stop sale not working. Wont return correct SaleInformation" );
-
 	}
-	
-	
-
 }
