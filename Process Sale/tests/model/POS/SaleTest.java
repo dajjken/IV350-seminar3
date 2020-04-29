@@ -45,7 +45,7 @@ class SaleTest {
 		String expResult = fakeTestingItem.getName();
 
 		testSale.addItemToList(fakeTestingItem, 10);
-		String result = testSale.itemsInPurchase.get(0).getItemDescription().getName();
+		String result = testSale.getItemsInPurchase().get(0).getItemDescription().getName();
 		
 		assertEquals(expResult,result, "Adding item to empty list not working");
 	}
