@@ -16,11 +16,9 @@ import model.util.TotalPrice;
  */
 public class Sale {
 	
-	LocalTime saleTime;
-	ArrayList<Item> itemsInPurchase = new ArrayList<>();
-	TotalPrice totalPrice;
-	
-	PresentSaleDTO displaySale;
+	private LocalTime saleTime;
+	private ArrayList<Item> itemsInPurchase = new ArrayList<>();
+	private TotalPrice totalPrice;
 	
 	/**
 	 * Creates a new instance. The time of sale is when the instance is initiated.
@@ -57,7 +55,7 @@ public class Sale {
 	private void updateList(ItemDescription itemToBeChecked, int quantity) {
 		if(this.itemIsInList(itemToBeChecked)) {
 			for(Item item: itemsInPurchase) {
-				if(item.itemDesc.equalID(itemToBeChecked)) {
+				if(item.getItemDescription().equalID(itemToBeChecked)) {
 					item.updateQuantity(quantity);
 					break;
 				}
@@ -98,7 +96,7 @@ public class Sale {
 	{
 		for(Item item: itemsInPurchase)
 		{
-			if(item.itemDesc.equals(checkedItem))				
+			if(item.getItemDescription().equals(checkedItem))				
 				return true;
 		}	
 			
@@ -107,6 +105,7 @@ public class Sale {
 	
 	/**
 	 * Returns the most recent scanned item.
+	 * 
 	 * @param itemDescription <code>ItemDescription</code> of the most recent scanned item.
 	 * @return The <code>Item</code> searched for.
 	 */
@@ -119,13 +118,14 @@ public class Sale {
 	/**
 	 * Searches the list of items for a specified <code>Item</code>. If a matching <code>Item</code> is found, 
 	 * the index of that item is returned. If not, -1 is returned.
+	 * 
 	 * @param itemDesc <code>ItemDescription</code> of the item searched for.
 	 * @return The index of the searched <code>Item</code> if found, else <code>-1</code>.
 	 */
 	private int getIndexOfItemInList(ItemDescription itemDesc) {
 		int index = -1;
 		for(Item item: itemsInPurchase) {
-			if(item.itemDesc.equalID(itemDesc)) {
+			if(item.getItemDescription().equalID(itemDesc)) {
 				index= itemsInPurchase.indexOf(item);
 			}
 		}
@@ -142,6 +142,7 @@ public class Sale {
 	
 	/**
 	 *  Returns the itemList as a <code>String</code>, will be used when printing receipt.
+	 *  
 	 * @return <code>String</code>-representation of the list if items.
 	 */
 	public String itemsToString() {
@@ -157,6 +158,7 @@ public class Sale {
 	
 	/**
 	 * Returns the <code>TotalPrice</code> that contains the total price and VAT-total.
+	 * 
 	 * @return The total price of the current <code>Sale</code>.
 	 */
 	public TotalPrice getTotalPrice() {
@@ -165,6 +167,7 @@ public class Sale {
 
 	/**
 	 * Returns the time when the <code>Sale</code> started.
+	 * 
 	 * @return saleTime as a <code>LocalTime</code>-object.
 	 */
 	public LocalTime getSaleTime() {
@@ -173,6 +176,7 @@ public class Sale {
 
 	/**
 	 * Returns the <code>ArrayList</code>.
+	 * 
 	 * @return The list of all items. 
 	 */
 	public ArrayList<Item> getItemsInPurchase() {
