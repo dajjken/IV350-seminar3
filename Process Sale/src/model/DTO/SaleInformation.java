@@ -10,7 +10,7 @@ import model.util.Amount;
 import model.util.TotalPrice;
 
 /**
- * This class is used as an DTO that contains information about the completed <code>Sale</code>.
+ * This class is used as an DTO that contains information about the completed {@link Sale}.
  * When the sale is completed, a first instance of this class is created. The first creation 
  * contains all information of the sale, except for the amount paid by the customer, and the
  * change that will be handed out. After the customer have paid in cash, the final 
@@ -48,7 +48,7 @@ public class SaleInformation {
 	 * to change and amountPaid.
 	 * 
 	 * @param saleInfo The first created instance of <code>SaleInformation</code>.
-	 * @param change Represents how much change that will be handed out, as an <code>Amount</code>-object.
+	 * @param change Represents how much change that will be handed out. Stored as an {@link Amount}-object.
 	 * @param amountPaid Represents how much cash the customer paid.
 	 * 
 	 */
@@ -65,7 +65,8 @@ public class SaleInformation {
 	}
 	
 	/**
-	 * Gets the <code>TotalPrice</code> field.
+	 * Gets the {@link TotalPrice} - totalPrice field.
+	 * 
 	 * @return the Total price.
 	 */
 	public TotalPrice getTotalPrice() {
@@ -74,6 +75,7 @@ public class SaleInformation {
 
 	/**
 	 * Gets the <code>LocalTime</code> saleTime field.
+	 * 
 	 * @return time of the sale.
 	 */
 	public LocalTime getSaleTime() {
@@ -82,6 +84,7 @@ public class SaleInformation {
 
 	/**
 	 * Gets the <code>LocalDate</code> date field.
+	 * 
 	 * @return  the date of the sale.
 	 */
 	public LocalDate getDate() {
@@ -90,6 +93,7 @@ public class SaleInformation {
 
 	/**
 	 * Gets the <code>Amount</code> totalVAT field.
+	 * 
 	 * @return totalVAT.
 	 */
 	public Amount getTotalVAT() {
@@ -97,7 +101,8 @@ public class SaleInformation {
 	}
 
 	/**
-	 * Gets the String-representation of the <code>ArrayList</code> of items.
+	 * Gets the <code>String</code>-representation of the <code>ArrayList</code> of items.
+	 * 
 	 * @return itemListAsString.
 	 */
 	public String getItemListAsString() {
