@@ -73,24 +73,5 @@ class ControllerTest {
 		assertEquals(expectedItemName, returnedItem.getName(), "Wrong item recieved from inventory.");
 	}
 	
-	@Test
-	void testPresentSaleDTO() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	void testStopSale() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	void testCheckDiscount() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	void testEnterAmountPaid() {
-		fail("Not yet implemented"); // TODO
-	}
 
 }
