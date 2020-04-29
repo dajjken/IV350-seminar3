@@ -1,34 +1,34 @@
 package model.util;
 
-import java.math.BigDecimal;
-
 /**
- * This class represent the amount of money used in the program. 
+ * This class represent the amount of money used in the application. 
  *
  */
 public class Amount {
 	
 	private final double amount;
 	
-	
 	/**
-	 *  Creates an instance of this class with default constructor
+	 *  Creates an instance of this class with default constructor. Sets the value to <code>0</code>.
 	 */
 	public Amount() {
 		this(0);
 	}
 	
 	/**
-	 *  Creates an new instance of this class
-	 * @param amount Represent the amount
+	 *  Creates an new instance of this class using a <code>double</code>.
+	 *  
+	 * @param amount Represent the value of the new instance.
 	 */
 	public Amount(double amount) {
 		this.amount = amount;
 	}
+	
 	/**
-	 * Adds another amount to the current instance of this class.
+	 * Adds another <code>Amount</code> to the current instance of this class.
 	 * 
-	 * @param Represents the amount that will be added.
+	 * @param other Represents the <code>Amount</code> that will be added.
+	 * 
 	 * @return the new updated amount
 	 */
 	public Amount addAmounts(Amount other) {
@@ -38,28 +38,32 @@ public class Amount {
 	public Amount addDouble(double value) {
 		return new Amount(this.amount +value);
 	}
+	
 	/**
-	 * Subtracts the current instance from another amount-object.
-	 * @param biggerAmount Represents the amount that the current instance will be subtracted from
-	 * @return the new updated amount.
+	 * Subtracts the current instance from another <code>Amount</code>-object.
+	 * 
+	 * @param biggerAmount The <code>Amount</code> that the current instance will be subtracted from.
+	 * @return The new updated <code>Amount</code>.
 	 */
 	public Amount subractCurrentAmount(Amount biggerAmount) {
         return new Amount(biggerAmount.amount - amount);
     }
 	
 	/**
-	 * Multpliply the current instance with the parameter.
-	 * @param number Represents the number of times the amount will be multiplied.
-	 * @return the new updated amount
+	 * Multiply the current instance with the <code>int</code>-parameter.
+	 * 
+	 * @param number The number of times the current instance will be multiplied.
+	 * @return The new updated <code>Amount</code>.
 	 */
 	public Amount multiplyAmount(int number) {
         return new Amount(amount * number);
     }
 	
 	/**
-	 * Multpliply the current instance with the parameter.
-	 * @param number Represents the number of times the amount will be multiplied.
-	 * @return the new updated amount
+	 * Multiply the current instance with the <code>double</code>-parameter.
+	 * 
+	 * @param number The number of times the current instance will be multiplied.
+	 * @return The new updated <code>Amount</code>.
 	 */
 	public Amount multiplyAmountDouble(double number) {
 	//	BigDecimal exactValue = new BigDecimal(number);
@@ -67,14 +71,19 @@ public class Amount {
         return new Amount(amount * number);
     }
 	
+	/**
+	 * Get the value that the current instance represents.
+	 * 
+	 * @return The value as a <code>double</code>.
+	 */
 	public double getValue() {
 		return amount;
 	}
 	
-	
 	/**
-	 * Returns the instance as a string-representation.
+	 * Returns the instance as a <code>String</code>-representation.
 	 */
+	@Override
 	public String toString()
 	{
 		return Double.toString(amount);
