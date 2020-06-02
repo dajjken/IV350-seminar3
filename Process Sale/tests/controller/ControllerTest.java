@@ -14,6 +14,7 @@ import integration.CreateSystems;
 import integration.ExternalInventorySystem;
 import integration.ItemDescription;
 import integration.Printer;
+import model.DTO.PresentSaleDTO;
 import model.POS.Sale;
 import model.util.TotalPrice;
 
@@ -52,6 +53,7 @@ class ControllerTest {
 		printer = null;
 		controllerToTest = null;
 		sale = null;
+		inventory = null;
 	}
 
 	@Test
@@ -73,5 +75,36 @@ class ControllerTest {
 		assertEquals(expectedItemName, returnedItem.getName(), "Wrong item recieved from inventory.");
 	}
 	
+	@Test
+	void testIfInvalidIDReturnsNull() {
+		int invalidItemID = 1111;
+		boolean expectedToBeFalse = true;
+		PresentSaleDTO expectedToBeNull = null;
+		expectedToBeNull = controllerToTest.findItem(invalidItemID, 4);
+		
+		if(expectedToBeNull == null)
+			expectedToBeFalse = false;
+		
+		assertFalse(expectedToBeFalse, "Could retrieve item with invalid ID from inventory.");
+	}
 
+	@Test
+	void testIfNegativeInvalidIDReturnsNull() {
+		int negativeInvalidItemID = -47;
+		boolean expectedToBeFalse = true;
+		PresentSaleDTO expectedToBeNull = null;
+		expectedToBeNull = controllerToTest.findItem(negativeInvalidItemID, 10);
+		
+		if(expectedToBeNull == null)
+			expectedToBeFalse = false;
+		
+		assertFalse(expectedToBeFalse, "Could retrieve item with negative invalid ID from inventory.");
+	}
+	
+	/*
+	@Test
+	void testStopSale() {
+		controllerToTest.findItem(itemID, quantity)
+	}
+	*/
 }
