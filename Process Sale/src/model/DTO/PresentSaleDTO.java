@@ -43,4 +43,11 @@ public class PresentSaleDTO {
 				+"\nTotal Price: \t\t" + totalPrice.getFinalPrice()+"\n";
 	}
 
+	/**
+	 * @return the most recent scanned item.
+	 */
+	public Item getItem() {
+		return mostRecentScannedItem;
+	}
+	
 }
